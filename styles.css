@@ -17,7 +17,9 @@ height:100vh ;
   background: linear-gradient(135deg, #fdf6e3, #fff7e6);
   color: #333333;
   text-align: center;
-
+ -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  color-adjust: exact; 
 }
 
 body{
