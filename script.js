@@ -46,7 +46,7 @@ const message = params.get('m');
   if (message) {
     try {
       const decoded = decodeURIComponent(atob(message));
-      recieve = decoded;
+      message = decoded;
       localStorage.setItem('msg', message);
       return;
     } catch {}
