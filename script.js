@@ -40,7 +40,12 @@ msg = decodeURIComponent(escape(atob(storedMsg)));
       localStorage.setItem('msg', message);
   }
 
-
+  if(!data){
+    recieve = "اخي العزيز"
+  }
+if(!message){
+    msg = "كل عام و انت بخير"
+  }
   
 });
 
