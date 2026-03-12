@@ -17,8 +17,8 @@ height:100vh ;
   background: linear-gradient(135deg, #fdf6e3, #fff7e6);
   color: #333333;
   text-align: center;
- /* -webkit-backface-visibility: hidden; 
-  backface-visibility: hidden; */
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden; 
   color-adjust: exact; 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -196,3 +196,4 @@ display: none;
   50% { transform: translateY(20px); }
   100% { transform: translateY(0); }
 }
+
