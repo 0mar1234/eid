@@ -19,7 +19,7 @@ height:100vh ;
   text-align: center;
   -webkit-backface-visibility: hidden; 
   backface-visibility: hidden; 
-  color-adjust: exact; 
+  color-adjust: light; 
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -196,4 +196,5 @@ display: none;
   50% { transform: translateY(20px); }
   100% { transform: translateY(0); }
 }
+
 
