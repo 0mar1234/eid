@@ -3,8 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 
-   /* background-color: red;
-  border : 2px solid blue;  */
+   background-color: red;
+  border : 2px solid blue; 
 }
 
 body, html {
@@ -197,3 +197,4 @@ display: none;
   50% { transform: translateY(20px); }
   100% { transform: translateY(0); }
 }
+
