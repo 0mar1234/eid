@@ -3,38 +3,45 @@ let msg = "";
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const data = params.get('n');
-  const message = params.get('m');
   const reset = params.has('r');
+
+const message = params.get('m');
 
   if (reset) {
     localStorage.removeItem('code');
     localStorage.removeItem('msg');
   }
 
-  const storedCode = localStorage.getItem('code');
+
+  
+  
+  const stored = localStorage.getItem('code');
   const storedMsg = localStorage.getItem('msg');
 
-  if (storedCode) {
-    try { recieve = decodeURIComponent(atob(storedCode)); } catch {}
-  } else if (data) {
-    try { 
-      recieve = decodeURIComponent(atob(data));
-      localStorage.setItem('code', data);
-    } catch {}
-  } else {
-    recieve = "أخي العزيز";
+  if (stored) {
+  msg = decodeURIComponent(escape(atob(storedMsg))); 
   }
 
-  if (storedMsg) {
-    try { msg = decodeURIComponent(atob(storedMsg)); } catch {}
-  } else if (message) {
-    try { 
-      msg = decodeURIComponent(atob(message));
-      localStorage.setItem('msg', message);
-    } catch {}
-  } else {
-    msg = "كل عام و انت بخير";
+   if (storedMsg) {
+msg = decodeURIComponent(escape(atob(storedMsg)));
   }
+  
+  
+  if (data) {
+      const decoded = decodeURIComponent(escape(atob(data)));
+      recieve = decoded;
+      localStorage.setItem('code', data);
+  }
+
+
+  if (message) {
+      const decoded = decodeURIComponent(escape(atob(message)));
+      msg = decoded;
+      localStorage.setItem('msg', message);
+  }
+
+
+  
 });
 
 const scrollT = function (elementId) {
