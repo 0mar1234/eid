@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate and decode for people</title>
+</head>
+<body>
+    <div id="input">
+        <input type="text" id="inputTextEncode" placeholder="Name">
+                <input type="text" id="message" placeholder="Message">
+
+        <button id="encode">Encode</button>
+        <p id="outputEncoded"></p>
+<p id="url"></p>
+        <br>
+
+        <input type="text" id="InputTextDecode">
+        <button id="decode">Decode</button>
+        <p id="outputDecode"></p>
+
+    </div>
+
+
+    <script>
+        const encode = document.getElementById('encode');
+        const input = document.getElementById('inputTextEncode');
+        const message = document.getElementById('message');
+        const outputEncoded = document.getElementById('outputEncoded');
+        const url = document.getElementById('url');
+
+        encode.addEventListener('click', function () {
+            const encoded = btoa(unescape(encodeURIComponent(input.value)));
+            const messageEncoded = btoa(unescape(encodeURIComponent(message.value)));
+            outputEncoded.textContent = encoded;
+const surl = `${window.location.origin}/?n=${encoded}${message.value.trim() ? `&m=${messageEncoded}` : ''}`;
+            url.textContent = surl;
+        });
+
+        const decode = document.getElementById('decode');
+        const inputDecode = document.getElementById('InputTextDecode');
+        const outputDecode = document.getElementById('outputDecode');
+        decode.addEventListener('click', function () {
+            const decoded = decodeURIComponent(escape(atob(inputDecode.value)));
+            outputDecode.textContent = decoded;
+        });
+    </script>
+</body>
+</html>

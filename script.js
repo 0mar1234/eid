@@ -1,8 +1,66 @@
-const recieve = " ماما";
+let recieve = "";
+let msg = "";
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get('n');
+  const reset = params.has('r');
 
-document.getElementById('nameMessage').textContent = `,${recieve}`;
+const message = params.get('m');
+
+  if (reset) {
+    localStorage.removeItem('code');
+    localStorage.removeItem('msg');
+  }
 
 
+  
+  
+  const stored = localStorage.getItem('code');
+  const storedMsg = localStorage.getItem('msg');
+
+  if (stored) {
+    try {
+      recieve = decodeURIComponent(atob(stored));
+      return;
+    } catch {}
+  }
+
+   if (storedMsg) {
+    try {
+      msg = decodeURIComponent(atob(storedMsg));
+      return;
+    } catch {}
+  }
+  
+  
+  if (data) {
+    try {
+      const decoded = decodeURIComponent(atob(data));
+      recieve = decoded;
+      localStorage.setItem('code', data);
+      return;
+    } catch {}
+  }
+
+
+  if (message) {
+    try {
+      const decoded = decodeURIComponent(atob(message));
+      recieve = decoded;
+      localStorage.setItem('msg', message);
+      return;
+    } catch {}
+  }
+
+
+  recieve = "أخي العزيز";
+  msg = "كل عام و انت بخير";
+});
+
+const scrollT = function (elementId) {
+  const element = document.getElementById(elementId);
+  element.scrollIntoView({ behavior: 'smooth' });
+};
 const pre = document.getElementById('pre');
 for(let i=0; i<200; i++){
   const star = document.createElement('div');
@@ -62,6 +120,13 @@ arrow.addEventListener('animationend', function() {
   })
 
   content.style.display = 'block';
+
+  setTimeout(() => {
+    document.getElementById('fact').style.display = 'block';
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').textContent = msg;
+
+  }, 5000);
 }, { once: true });
 
-const hint = document.getElementById('hint');
+document.addEventListener("contextmenu", e => e.preventDefault());

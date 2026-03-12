@@ -17,14 +17,26 @@ height:100vh ;
   background: linear-gradient(135deg, #fdf6e3, #fff7e6);
   color: #333333;
   text-align: center;
- -webkit-backface-visibility: hidden; 
-  backface-visibility: hidden;
+ /* -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden; */
   color-adjust: exact; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* silly apple being silly */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body{
   overflow-y: hidden;
   overflow-x: hidden;
+    user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 html{
@@ -105,25 +117,33 @@ position: absolute;
 top: 30%;
 }
 #name{
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #000000;
   margin-top: 10px;
 }
 #sub{
   margin-top: 20px;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   color: #00000092;
 }
 
 
 
-#message{
-  font-size: 1.25rem;
+#fact{
+  font-size: 1.5rem;
   color: #000000;
-margin-top: 250px;
+margin-top: 260px;
+margin-bottom: 20px;
+display: none;
+}
 
-background-color: red;
+#message{
+  font-size: 1.5rem;
+  color: #000000;
+margin-top: 100px;
+margin-bottom: 50px;
+display: none;
 }
 
 /*  Animation Classes */
@@ -139,7 +159,7 @@ background-color: red;
   animation: float 2s infinite alternate;
 }
 .arrow_down {
-  animation: arrow_down 2s ease-in-out infinite;
+  animation: arrow_down 1s ease-in-out infinite;
 }
 .fade {
   animation: fadeIn 2s ease-in-out;
