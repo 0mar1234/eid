@@ -144,6 +144,7 @@ margin-top: 260px;
 margin-bottom: 20px;
 text-align: center;
 display: none;
+padding: 20;
 }
 
 #message{
@@ -153,6 +154,7 @@ margin-top: 100px;
 margin-bottom: 50px;
 display: none;
 text-align: center;
+padding: 20px;
 }
 
 /*  Animation Classes */

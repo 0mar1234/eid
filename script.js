@@ -12,40 +12,30 @@ const message = params.get('m');
     localStorage.removeItem('msg');
   }
 
-
-  
-  
   const stored = localStorage.getItem('code');
   const storedMsg = localStorage.getItem('msg');
 
   if (stored) {
-  msg = decodeURIComponent(escape(atob(storedMsg))); 
-  }
+  recieve = decodeURIComponent(atob(stored));
+ }
+else if (data) {
+    const decoded = decodeURIComponent(atob(data));
+    recieve = decoded;
+    localStorage.setItem('code', data);
+}
+else recieve = "اخي العزيز"
 
    if (storedMsg) {
-msg = decodeURIComponent(escape(atob(storedMsg)));
+msg = decodeURIComponent(atob(storedMsg));
   }
-  
-  
-  if (data) {
-      const decoded = decodeURIComponent(escape(atob(data)));
-      recieve = decoded;
-      localStorage.setItem('code', data);
-  }
-
-
-  if (message) {
-      const decoded = decodeURIComponent(escape(atob(message)));
+  else if (message) {
+      const decoded = decodeURIComponent(atob(message));
       msg = decoded;
       localStorage.setItem('msg', message);
   }
-
-  if(!data){
-    recieve = "اخي العزيز"
-  }
-if(!message){
-    msg = "كل عام و انت بخير"
-  }
+  else msg = "كل عام و انت بخير"
+  
+ 
   
 });
 
@@ -53,7 +43,9 @@ const scrollT = function (elementId) {
   const element = document.getElementById(elementId);
   element.scrollIntoView({ behavior: 'smooth' });
 };
+
 const pre = document.getElementById('pre');
+
 for(let i=0; i<200; i++){
   const star = document.createElement('div');
   star.className = 'star';
@@ -82,43 +74,43 @@ const moon = document.getElementById('moon');
 const preContainer = document.getElementById('pre');
 const content = document.getElementById('content');
 const arrow = document.getElementById('arrow_down');
+
 moon.addEventListener('click', function() {
-  // preContainer.style.display = 'none';
+
   moon.classList.remove('pulse');
   preContainer.classList.add('slideDown');
+
 setTimeout(() => {
   const audio = new Audio('aud.mp3');
   audio.play();
-  
 }, 250);
 
-  
 arrow.classList.add('fade');
+
 arrow.addEventListener('animationend', function() {
   arrow.classList.remove('fade');
   arrow.classList.add('arrow_down');
-  })
-
-
+})
 
   preContainer.addEventListener('animationend', function() {
     preContainer.style.display = 'none';
     moon.classList.add('float')
     document.body.style.overflowY = 'scroll';
     typewrite(recieve, 'name', 100);
+
     setTimeout(() => {
-  typewrite('عيد مبارك', 'sub', 150);
-}, 1500);
+      typewrite('عيد مبارك', 'sub', 150);
+    }, 1500);
   })
 
   content.style.display = 'block';
 
   setTimeout(() => {
     document.getElementById('fact').style.display = 'block';
-        document.getElementById('message').style.display = 'block';
-        document.getElementById('message').textContent = msg;
-
+    document.getElementById('message').style.display = 'block';
+    document.getElementById('message').textContent = msg;
   }, 5000);
+
 }, { once: true });
 
 document.addEventListener("contextmenu", e => e.preventDefault());
